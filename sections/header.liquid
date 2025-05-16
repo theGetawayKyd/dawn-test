@@ -123,15 +123,16 @@
 %}
 
 <{{ header_tag }} {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
-  {%- liquid
-    if menu_to_use != blank
-      render 'header-drawer'
-    endif
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if menu_to_use != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}">
+    {%- liquid
+      if menu_to_use != blank
+        render 'header-drawer'
+      endif
 
-    if section.settings.logo_position == 'top-center' or menu_to_use == blank
-      render 'header-search', input_id: 'Search-In-Modal-1'
-    endif
-  -%}
+      if section.settings.logo_position == 'top-center' or menu_to_use == blank
+        render 'header-search', input_id: 'Search-In-Modal-1'
+      endif
+    -%}
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
