@@ -19,6 +19,7 @@
     margin: 0;
     padding: 0;
     gap: 20px;
+    align-items: center;
   }
   
   .brand-selector__item {
@@ -26,7 +27,33 @@
   }
   
   .brand-selector__item--active {
-    font-weight: bold;
+    position: relative;
+  }
+  
+  .brand-selector__item--active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--brand-primary-color, currentColor);
+  }
+  
+  .brand-selector__logo {
+    display: block;
+    height: 30px;
+    width: auto;
+    max-width: 100px;
+    transition: opacity 0.2s ease;
+  }
+  
+  .brand-selector__item:hover .brand-selector__logo {
+    opacity: 0.8;
+  }
+  
+  .brand-selector__item--active .brand-selector__logo {
+    opacity: 1;
   }
 </style>
 
@@ -39,8 +66,14 @@
             data-brand-logo="{{ block.settings.brand_logo | img_url: 'master' }}"
             data-brand-menu="{{ block.settings.brand_menu }}"
             data-brand-color-scheme="{{ block.settings.brand_color_scheme }}">
-          <a href="#" onclick="selectBrand('{{ block.settings.brand_id }}'); return false;">
-            {{ block.settings.brand_name }}
+          <a href="#" onclick="selectBrand('{{ block.settings.brand_id }}'); return false;" title="{{ block.settings.brand_name }}">
+            <img 
+              src="{{ block.settings.brand_logo | img_url: 'master' }}" 
+              alt="{{ block.settings.brand_name }}" 
+              class="brand-selector__logo"
+              width="100"
+              loading="lazy"
+            >
           </a>
         </li>
       {% endif %}
@@ -128,7 +161,8 @@
         {
           "type": "image_picker",
           "id": "brand_logo",
-          "label": "Brand logo"
+          "label": "Brand logo",
+          "info": "Upload SVG or PNG logo files. Recommended height: 30px"
         },
         {
           "type": "link_list",
