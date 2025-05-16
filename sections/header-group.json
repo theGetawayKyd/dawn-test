@@ -64,12 +64,32 @@
             "brand_menu": "",
             "brand_color_scheme": ""
           }
+        },
+        "brand_chWiiC": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Takata",
+            "brand_id": "tak",
+            "brand_menu": "",
+            "brand_color_scheme": "background-1"
+          }
+        },
+        "brand_GpQpfQ": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Cobra",
+            "brand_id": "cbr",
+            "brand_menu": "",
+            "brand_color_scheme": "background-1"
+          }
         }
       },
       "block_order": [
         "brand_MQLLCD",
         "brand_tBqtqF",
-        "brand_Chbgk8"
+        "brand_Chbgk8",
+        "brand_chWiiC",
+        "brand_GpQpfQ"
       ],
       "name": "Brand Selector",
       "settings": {
