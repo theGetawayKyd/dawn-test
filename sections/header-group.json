@@ -44,6 +44,7 @@
             "brand_name": "HMS Motorsport",
             "brand_id": "hms",
             "brand_logo": "shopify://shop_images/HMS_noMS.svg",
+            "brand_header_logo": "shopify://shop_images/hms.logo.color.blackMS.stroke.svg",
             "brand_menu": "main-menu",
             "brand_color_scheme": "scheme-5"
           }
@@ -54,6 +55,7 @@
             "brand_name": "Schroth",
             "brand_id": "ssp",
             "brand_logo": "shopify://shop_images/SSP_Gold.svg",
+            "brand_header_logo": "shopify://shop_images/SSP_Gold_Stroke.svg",
             "brand_menu": "ssp-menu",
             "brand_color_scheme": "scheme-3"
           }
@@ -64,6 +66,7 @@
             "brand_name": "Schuberth",
             "brand_id": "sbt",
             "brand_logo": "shopify://shop_images/SCHUBERTH_Logo-V_4C_P_M.svg",
+            "brand_header_logo": "shopify://shop_images/SCHUBERTH_Logo-V_4C_P_M.svg",
             "brand_menu": "sbt-menu",
             "brand_color_scheme": ""
           }
@@ -74,6 +77,7 @@
             "brand_name": "Takata",
             "brand_id": "tak",
             "brand_logo": "shopify://shop_images/TK-RA-O-Green-P-L_2013.svg",
+            "brand_header_logo": "shopify://shop_images/TK-RA-O-Green-P-S.svg",
             "brand_menu": "tak-menu",
             "brand_color_scheme": "background-1"
           }
@@ -84,7 +88,19 @@
             "brand_name": "Cobra",
             "brand_id": "cbr",
             "brand_logo": "shopify://shop_images/logo-cobra_67b32e83-6b2c-4717-98b2-113500e0ba7e.svg",
+            "brand_header_logo": "shopify://shop_images/logo-cobra.svg",
             "brand_menu": "cbr-menu",
+            "brand_color_scheme": "background-1"
+          }
+        },
+        "brand_tNVak3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "RaceCom",
+            "brand_id": "rcm",
+            "brand_logo": "shopify://shop_images/RACECOM.svg",
+            "brand_header_logo": "shopify://shop_images/RACECOM.svg",
+            "brand_menu": "",
             "brand_color_scheme": "background-1"
           }
         }
@@ -94,7 +110,8 @@
         "brand_tBqtqF",
         "brand_Chbgk8",
         "brand_chWiiC",
-        "brand_GpQpfQ"
+        "brand_GpQpfQ",
+        "brand_tNVak3"
       ],
       "name": "Brand Selector",
       "settings": {
