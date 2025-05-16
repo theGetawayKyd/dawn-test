@@ -65,7 +65,8 @@
       {% if block.type == 'brand' %}
         <li class="brand-selector__item{% if block.settings.brand_id == current_brand %} brand-selector__item--active{% endif %}" 
             data-brand-id="{{ block.settings.brand_id }}"
-            data-brand-logo="{{ block.settings.brand_logo | img_url: 'master' }}"
+            data-brand-menu-logo="{{ block.settings.brand_logo | img_url: 'master' }}"
+            data-brand-header-logo="{{ block.settings.brand_header_logo | img_url: 'master' }}"
             data-brand-menu="{{ block.settings.brand_menu }}"
             data-brand-color-scheme="{{ block.settings.brand_color_scheme }}">
           <a href="#" onclick="selectBrand('{{ block.settings.brand_id }}'); return false;" title="{{ block.settings.brand_name }}">
@@ -105,11 +106,17 @@
         brandElement.classList.add('brand-selector__item--active');
         
         // Update logo if needed
-        const logoUrl = brandElement.getAttribute('data-brand-logo');
-        if (logoUrl) {
+        const headerLogoUrl = brandElement.getAttribute('data-brand-header-logo');
+        if (headerLogoUrl) {
           const logoElements = document.querySelectorAll('.header__heading-logo');
           logoElements.forEach(logo => {
-            logo.setAttribute('src', logoUrl);
+            // Set the src attribute directly
+            logo.src = headerLogoUrl;
+            
+            // Also update any srcset attributes if they exist
+            if (logo.hasAttribute('srcset')) {
+              logo.removeAttribute('srcset');
+            }
           });
         }
         
@@ -163,8 +170,14 @@
         {
           "type": "image_picker",
           "id": "brand_logo",
-          "label": "Brand logo",
-          "info": "Upload SVG or PNG logo files. Recommended height: 30px"
+          "label": "Brand menu logo",
+          "info": "Logo displayed in the brand selector menu. Upload SVG or PNG files. Recommended height: 30px"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_header_logo",
+          "label": "Brand header logo",
+          "info": "Logo displayed in the Shopify header when this brand is selected"
         },
         {
           "type": "link_list",
