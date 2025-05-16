@@ -100,8 +100,8 @@
             "brand_id": "rcm",
             "brand_logo": "shopify://shop_images/RACECOM.svg",
             "brand_header_logo": "shopify://shop_images/RACECOM.svg",
-            "brand_menu": "",
-            "brand_color_scheme": "background-1"
+            "brand_menu": "rcm-menu",
+            "brand_color_scheme": "scheme-2"
           }
         }
       },
