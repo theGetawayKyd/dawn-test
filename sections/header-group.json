@@ -43,6 +43,7 @@
           "settings": {
             "brand_name": "HMS Motorsport",
             "brand_id": "hms",
+            "brand_logo": "shopify://shop_images/HMS_noMS.svg",
             "brand_menu": "main-menu",
             "brand_color_scheme": "scheme-5"
           }
@@ -52,6 +53,7 @@
           "settings": {
             "brand_name": "Schroth",
             "brand_id": "ssp",
+            "brand_logo": "shopify://shop_images/SSP_Gold.svg",
             "brand_menu": "ssp-menu",
             "brand_color_scheme": "scheme-3"
           }
@@ -61,6 +63,7 @@
           "settings": {
             "brand_name": "Schuberth",
             "brand_id": "sbt",
+            "brand_logo": "shopify://shop_images/SCHUBERTH_Logo-V_4C_P_M.svg",
             "brand_menu": "",
             "brand_color_scheme": ""
           }
@@ -70,6 +73,7 @@
           "settings": {
             "brand_name": "Takata",
             "brand_id": "tak",
+            "brand_logo": "shopify://shop_images/TK-RA-O-Green-P-L_2013.svg",
             "brand_menu": "",
             "brand_color_scheme": "background-1"
           }
@@ -79,6 +83,7 @@
           "settings": {
             "brand_name": "Cobra",
             "brand_id": "cbr",
+            "brand_logo": "shopify://shop_images/logo-cobra_67b32e83-6b2c-4717-98b2-113500e0ba7e.svg",
             "brand_menu": "",
             "brand_color_scheme": "background-1"
           }
