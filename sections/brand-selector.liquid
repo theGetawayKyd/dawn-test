@@ -5,6 +5,19 @@
   {% section 'brand-selector' %}
 {% endcomment %}
 
+{% liquid
+  # Get the selected brand from the URL parameter or cookie
+  assign selected_brand = request.params.brand
+  
+  # If no brand is selected in URL, check for cookie
+  if selected_brand == blank
+    assign selected_brand = request.cookies.selected_brand
+  endif
+  
+  # Make the selected brand available globally
+  assign selected_brand_global = selected_brand
+%}
+
 <style>
   .brand-selector {
     display: flex;
@@ -63,7 +76,7 @@
   <ul class="brand-selector__list" role="list">
     {% for block in section.blocks %}
       {% if block.type == 'brand' %}
-        <li class="brand-selector__item{% if block.settings.brand_id == current_brand %} brand-selector__item--active{% endif %}" 
+        <li class="brand-selector__item{% if block.settings.brand_id == selected_brand_global %} brand-selector__item--active{% endif %}" 
             data-brand-id="{{ block.settings.brand_id }}"
             data-brand-menu-logo="{{ block.settings.brand_logo | img_url: 'master' }}"
             data-brand-header-logo="{{ block.settings.brand_header_logo | img_url: 'master' }}"
