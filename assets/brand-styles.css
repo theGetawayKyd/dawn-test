@@ -57,7 +57,7 @@
 .brand-selector__item a {
   color: var(--color-foreground);
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0 0 5px 0;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
 }
