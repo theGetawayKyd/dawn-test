@@ -59,8 +59,8 @@
         "brand_Chbgk8": {
           "type": "brand",
           "settings": {
-            "brand_name": "Brand name",
-            "brand_id": "brand1",
+            "brand_name": "Schuberth",
+            "brand_id": "sbt",
             "brand_menu": "",
             "brand_color_scheme": ""
           }
