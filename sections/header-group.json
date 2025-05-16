@@ -50,10 +50,10 @@
         "brand_tBqtqF": {
           "type": "brand",
           "settings": {
-            "brand_name": "Brand name",
-            "brand_id": "brand1",
-            "brand_menu": "",
-            "brand_color_scheme": ""
+            "brand_name": "Schroth",
+            "brand_id": "ssp",
+            "brand_menu": "ssp-menu",
+            "brand_color_scheme": "scheme-3"
           }
         },
         "brand_Chbgk8": {
