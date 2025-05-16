@@ -1,0 +1,111 @@
+/**
+ * Brand-specific styles
+ *
+ * This file contains styles for different brand experiences.
+ * Each brand has its own color scheme and styling rules.
+ */
+
+/* Base brand styles */
+:root {
+  --brand-primary-color: var(--color-base-accent-1);
+  --brand-secondary-color: var(--color-base-accent-2);
+  --brand-background-color: var(--color-base-background-1);
+  --brand-text-color: var(--color-base-text);
+}
+
+/* Brand-specific color schemes */
+[data-selected-brand='brand1'] {
+  --brand-primary-color: #ff5722;
+  --brand-secondary-color: #ff9800;
+  --brand-background-color: #fff3e0;
+  --brand-text-color: #212121;
+}
+
+[data-selected-brand='brand2'] {
+  --brand-primary-color: #2196f3;
+  --brand-secondary-color: #03a9f4;
+  --brand-background-color: #e1f5fe;
+  --brand-text-color: #263238;
+}
+
+[data-selected-brand='brand3'] {
+  --brand-primary-color: #4caf50;
+  --brand-secondary-color: #8bc34a;
+  --brand-background-color: #f1f8e9;
+  --brand-text-color: #1b5e20;
+}
+
+[data-selected-brand='brand4'] {
+  --brand-primary-color: #9c27b0;
+  --brand-secondary-color: #ba68c8;
+  --brand-background-color: #f3e5f5;
+  --brand-text-color: #4a148c;
+}
+
+[data-selected-brand='brand5'] {
+  --brand-primary-color: #f44336;
+  --brand-secondary-color: #e57373;
+  --brand-background-color: #ffebee;
+  --brand-text-color: #b71c1c;
+}
+
+/* Brand-specific header styles */
+.brand-selector {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.brand-selector__item a {
+  color: var(--color-foreground);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.brand-selector__item a:hover {
+  background-color: rgba(var(--color-foreground), 0.05);
+}
+
+.brand-selector__item--active a {
+  font-weight: 600;
+  color: var(--brand-primary-color);
+  border-bottom: 2px solid var(--brand-primary-color);
+}
+
+/* Apply brand colors to various elements */
+.brand-selector__item--active a,
+[data-selected-brand] .header__menu-item:hover,
+[data-selected-brand] .header__active-menu-item {
+  color: var(--brand-primary-color);
+}
+
+[data-selected-brand] .button {
+  background-color: var(--brand-primary-color);
+}
+
+[data-selected-brand] .button:hover {
+  background-color: var(--brand-secondary-color);
+}
+
+/* Brand-specific mega menu styling */
+[data-selected-brand] .mega-menu__content {
+  border-top: 3px solid var(--brand-primary-color);
+}
+
+[data-selected-brand] .mega-menu__link--active {
+  color: var(--brand-primary-color);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 749px) {
+  .brand-selector__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .brand-selector__item a {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+  }
+}

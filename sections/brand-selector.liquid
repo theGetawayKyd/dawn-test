@@ -1,0 +1,164 @@
+{% comment %}
+  Renders a brand selector menu above the main header.
+  
+  Usage:
+  {% section 'brand-selector' %}
+{% endcomment %}
+
+<style>
+  .brand-selector {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: {{ section.settings.background_color }};
+  }
+  
+  .brand-selector__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+  
+  .brand-selector__item {
+    cursor: pointer;
+  }
+  
+  .brand-selector__item--active {
+    font-weight: bold;
+  }
+</style>
+
+<div class="brand-selector color-{{ section.settings.color_scheme }} gradient">
+  <ul class="brand-selector__list" role="list">
+    {% for block in section.blocks %}
+      {% if block.type == 'brand' %}
+        <li class="brand-selector__item{% if block.settings.brand_id == current_brand %} brand-selector__item--active{% endif %}" 
+            data-brand-id="{{ block.settings.brand_id }}"
+            data-brand-logo="{{ block.settings.brand_logo | img_url: 'master' }}"
+            data-brand-menu="{{ block.settings.brand_menu }}"
+            data-brand-color-scheme="{{ block.settings.brand_color_scheme }}">
+          <a href="#" onclick="selectBrand('{{ block.settings.brand_id }}'); return false;">
+            {{ block.settings.brand_name }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+  function selectBrand(brandId) {
+    // Store the selected brand in localStorage
+    localStorage.setItem('selectedBrand', brandId);
+    
+    // Reload the page to apply the changes
+    window.location.reload();
+  }
+  
+  // On page load, check if a brand is already selected
+  document.addEventListener('DOMContentLoaded', function() {
+    const selectedBrand = localStorage.getItem('selectedBrand');
+    if (selectedBrand) {
+      document.documentElement.setAttribute('data-selected-brand', selectedBrand);
+      
+      // Find the selected brand element
+      const brandElement = document.querySelector(`[data-brand-id="${selectedBrand}"]`);
+      if (brandElement) {
+        // Apply active class
+        brandElement.classList.add('brand-selector__item--active');
+        
+        // Update logo if needed
+        const logoUrl = brandElement.getAttribute('data-brand-logo');
+        if (logoUrl) {
+          const logoElements = document.querySelectorAll('.header__heading-logo');
+          logoElements.forEach(logo => {
+            logo.setAttribute('src', logoUrl);
+          });
+        }
+        
+        // Apply color scheme
+        const colorScheme = brandElement.getAttribute('data-brand-color-scheme');
+        if (colorScheme) {
+          document.documentElement.style.setProperty('--color-scheme', colorScheme);
+        }
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Brand Selector",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f3f3f3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand name",
+          "default": "Brand name"
+        },
+        {
+          "type": "text",
+          "id": "brand_id",
+          "label": "Brand ID (unique identifier)",
+          "default": "brand1"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "link_list",
+          "id": "brand_menu",
+          "label": "Brand menu"
+        },
+        {
+          "type": "color_scheme",
+          "id": "brand_color_scheme",
+          "label": "Brand color scheme",
+          "default": "background-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Selector",
+      "blocks": [
+        {
+          "type": "brand"
+        },
+        {
+          "type": "brand"
+        },
+        {
+          "type": "brand"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

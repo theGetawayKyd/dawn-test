@@ -39,6 +39,11 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    <!-- Brand Switcher Assets -->
+    <link rel="stylesheet" href="{{ 'brand-styles.css' | asset_url }}" media="print" onload="this.media='all'">
+    <script src="{{ 'brand-switcher.js' | asset_url }}" defer="defer"></script>
+    <!-- End Brand Switcher Assets -->
+
     {{ content_for_header }}
 
     {%- liquid

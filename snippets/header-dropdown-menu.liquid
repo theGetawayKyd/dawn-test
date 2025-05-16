@@ -2,12 +2,15 @@
   Renders a standard dropdown style menu for the header.
 
   Usage:
-  {% render 'header-dropdown-menu' %}
+  {% render 'header-dropdown-menu', menu: menu_to_use %}
+
+  Parameters:
+  - menu: {Object} Menu object to display (required)
 {% endcomment %}
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
-    {%- for link in section.settings.menu.links -%}
+    {%- for link in menu.links -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
