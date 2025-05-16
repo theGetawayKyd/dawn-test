@@ -99,41 +99,32 @@
 
 <script>
   function selectBrand(brandId) {
-    // Store the selected brand in localStorage
+    // Store the selected brand in a cookie (accessible server-side)
+    document.cookie = "selected_brand=" + brandId + "; path=/; max-age=31536000"; // 1 year
+    
+    // Store in localStorage for backward compatibility
     localStorage.setItem('selectedBrand', brandId);
     
-    // Reload the page to apply the changes
-    window.location.reload();
+    // Redirect to the same page with brand parameter to avoid flash
+    const url = new URL(window.location.href);
+    url.searchParams.set('brand', brandId);
+    window.location.href = url.toString();
   }
   
-  // On page load, check if a brand is already selected
+  // On page load, ensure localStorage is in sync with cookie for backward compatibility
   document.addEventListener('DOMContentLoaded', function() {
-    const selectedBrand = localStorage.getItem('selectedBrand');
+    const selectedBrand = "{{ selected_brand_global }}";
+    
     if (selectedBrand) {
+      // Store in localStorage for backward compatibility
+      localStorage.setItem('selectedBrand', selectedBrand);
+      
+      // Set data attribute for CSS targeting
       document.documentElement.setAttribute('data-selected-brand', selectedBrand);
       
-      // Find the selected brand element
+      // Apply color scheme from the selected brand element
       const brandElement = document.querySelector(`[data-brand-id="${selectedBrand}"]`);
       if (brandElement) {
-        // Apply active class
-        brandElement.classList.add('brand-selector__item--active');
-        
-        // Update logo if needed
-        const headerLogoUrl = brandElement.getAttribute('data-brand-header-logo');
-        if (headerLogoUrl) {
-          const logoElements = document.querySelectorAll('.header__heading-logo');
-          logoElements.forEach(logo => {
-            // Set the src attribute directly
-            logo.src = headerLogoUrl;
-            
-            // Also update any srcset attributes if they exist
-            if (logo.hasAttribute('srcset')) {
-              logo.removeAttribute('srcset');
-            }
-          });
-        }
-        
-        // Apply color scheme
         const colorScheme = brandElement.getAttribute('data-brand-color-scheme');
         if (colorScheme) {
           document.documentElement.style.setProperty('--color-scheme', colorScheme);
