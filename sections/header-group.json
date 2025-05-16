@@ -64,7 +64,7 @@
             "brand_name": "Schuberth",
             "brand_id": "sbt",
             "brand_logo": "shopify://shop_images/SCHUBERTH_Logo-V_4C_P_M.svg",
-            "brand_menu": "",
+            "brand_menu": "sbt-menu",
             "brand_color_scheme": ""
           }
         },
@@ -74,7 +74,7 @@
             "brand_name": "Takata",
             "brand_id": "tak",
             "brand_logo": "shopify://shop_images/TK-RA-O-Green-P-L_2013.svg",
-            "brand_menu": "",
+            "brand_menu": "tak-menu",
             "brand_color_scheme": "background-1"
           }
         },
@@ -84,7 +84,7 @@
             "brand_name": "Cobra",
             "brand_id": "cbr",
             "brand_logo": "shopify://shop_images/logo-cobra_67b32e83-6b2c-4717-98b2-113500e0ba7e.svg",
-            "brand_menu": "",
+            "brand_menu": "cbr-menu",
             "brand_color_scheme": "background-1"
           }
         }
